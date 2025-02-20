@@ -1,0 +1,28 @@
+
+image: #
+
+stages:
+  - check-google-java-format
+  - build
+
+# Check the java code format. If the code format is not correct, the job will fail.
+check-code-format:
+  stage: check-google-java-format
+  # Allow failure is nice if you want your team not to be blocked under some circumstances.
+  allow_failure: true
+  tags:
+    - maven
+  script:
+    - mvn spotless:check
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+# Your regular build job
+build-for-mr:
+  stage: build
+  tags:
+    - maven
+  script:
+    - mvn clean install
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
