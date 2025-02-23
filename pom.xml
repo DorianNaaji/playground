@@ -12,6 +12,7 @@
         <module>adventofcode</module>
         <module>sandbox</module>
         <module>enforce-google-java-format</module>
+        <module>enforce-conventional-commits</module>
     </modules>
 
     <properties>

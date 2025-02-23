@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# Adapt this as you wish, according to your Jira Project tag
+JIRA_PROJECT_TAG='PRJ'
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Jira ticket [PRJ-1234] (optional)
+JIRA_REGEX="(\[$JIRA_PROJECT_TAG-[0-9]+\] )?"
+# Only one of the following types is allowed
+TYPE_REGEX="(build|ci|chore|docs|feat|fix|perf|refactor|style|test)"
+# The commit scope
+SCOPE_REGEX="(\([a-zA-Z0-9_-]+\))?"
+# Commit description, could be anything
+DESC_REGEX=": .+"
+
+# [<OPTIONAL_JIRA_TICKET>] <commit_type><(optional_scope)>: <description>
+# You can remove the JIRA part if you don't need it.
+COMMIT_REGEX="^$JIRA_REGEX *$TYPE_REGEX$SCOPE_REGEX$DESC_REGEX$"
+
+# Allow merge and rebase commits
+if git rev-parse -q --verify MERGE_HEAD >/dev/null; then
+    exit 0
+fi
+
+if ! echo "$COMMIT_MSG" | grep -Eq "$COMMIT_REGEX"; then
+    echo "\033[31mERROR: Invalid commit message format.\033[0m"
+    echo "Your commit: $COMMIT_MSG"
+    echo "Expected format: [<JIRA-TICKET>] <type><(optional_scope)>: <description>"
+    echo "Example: [PRJ-1252] feat(api): add authentication support"
+    echo "Example: [PRJ-1242] feat: add commit-msg hooks"
+    echo "Example: build: add new maven module"
+    echo "Example: ci(mergeRequests): add sonar analysis"
+    exit 1
+fi
+
+exit 0
