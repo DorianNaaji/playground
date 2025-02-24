@@ -12,8 +12,8 @@
     <artifactId>enforce-google-java-format</artifactId>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -40,7 +40,7 @@
                         </includes>
                         <googleJavaFormat>
                             <version>1.25.2</version>
-                            <style>AOSP</style>
+                            <style>GOOGLE</style>
                         </googleJavaFormat>
                         <importOrder />
                         <removeUnusedImports />

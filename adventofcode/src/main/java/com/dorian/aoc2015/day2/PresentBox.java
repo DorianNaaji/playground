@@ -2,9 +2,7 @@ package com.dorian.aoc2015.day2;
 
 import java.util.Arrays;
 
-/**
- * Box dimensions are in feet.
- */
+/** Box dimensions are in feet. */
 public class PresentBox {
 
   private final long length;
@@ -23,25 +21,25 @@ public class PresentBox {
     this.height = height;
 
     this.side1SurfaceArea = this.length * this.width;
-    this.side2SurfaceArea = this.width  * this.height;
+    this.side2SurfaceArea = this.width * this.height;
     this.side3SurfaceArea = this.height * this.length;
 
-    this.smallestSideSurfaceArea = Math.min(Math.min(this.side1SurfaceArea, this.side2SurfaceArea), this.side3SurfaceArea);
+    this.smallestSideSurfaceArea =
+        Math.min(Math.min(this.side1SurfaceArea, this.side2SurfaceArea), this.side3SurfaceArea);
   }
 
-
-  /**
-   * Constructs a presentBox from a string like "6x2x4".
-   */
+  /** Constructs a presentBox from a string like "6x2x4". */
   public static PresentBox fromString(String dimensionsAsString) {
-    long[] dimensions = Arrays.stream(dimensionsAsString.split("x")).mapToLong(Long::parseLong).toArray();
+    long[] dimensions =
+        Arrays.stream(dimensionsAsString.split("x")).mapToLong(Long::parseLong).toArray();
     assert dimensions.length == 3 : "Incorrectly formed dimensions. Use 'wxlxh' format";
     return new PresentBox(dimensions[0], dimensions[1], dimensions[2]);
   }
 
   /**
-   * Amount of required paper in square feet is computed with
-   * the surface of the present box PLUS the smallest side.
+   * Amount of required paper in square feet is computed with the surface of the present box PLUS
+   * the smallest side.
+   *
    * @return the required amount of paper to wrap the present box, in square feet.
    */
   public long getRequiredPaperInSquareFeet() {
@@ -49,8 +47,9 @@ public class PresentBox {
   }
 
   /**
-   * Length of ribbon required : shortest distance around its sides to wrap
-   * AND cubic volume to make a bow.
+   * Length of ribbon required : shortest distance around its sides to wrap AND cubic volume to make
+   * a bow.
+   *
    * @return the required ribbon length in feet
    */
   public long getRequiredRibbonLength() {

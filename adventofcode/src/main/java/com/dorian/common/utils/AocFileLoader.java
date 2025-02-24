@@ -8,13 +8,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-/**
- * Misc file loading util.
- */
+/** Misc file loading util. */
 public class AocFileLoader {
   private static final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
-  public static List<String> readFromResources(String resourceFile) throws IOException, URISyntaxException {
+  public static List<String> readFromResources(String resourceFile)
+      throws IOException, URISyntaxException {
     URL url = classloader.getResource(resourceFile);
     if (url == null) {
       throw new IOException("Malformed url/resource name");

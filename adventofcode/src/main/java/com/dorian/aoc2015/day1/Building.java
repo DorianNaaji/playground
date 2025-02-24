@@ -12,7 +12,6 @@ public class Building {
   }
 
   public Optional<Floor> findFloor(int level) {
-    return floors.stream().filter(floor -> floor.getLevel() == level)
-            .findFirst();
+    return floors.stream().filter(floor -> floor.getLevel() == level).findFirst();
   }
 }

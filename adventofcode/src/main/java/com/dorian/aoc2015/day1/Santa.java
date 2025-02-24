@@ -38,11 +38,13 @@ public class Santa {
   }
 
   private Floor findOrCreateFloor(int level) {
-    return this.building.findFloor(level)
-      .orElseGet(() -> {
-        Floor newFloor = new Floor(level);
-        this.building.addFloor(newFloor);
-        return  newFloor;
-      });
+    return this.building
+        .findFloor(level)
+        .orElseGet(
+            () -> {
+              Floor newFloor = new Floor(level);
+              this.building.addFloor(newFloor);
+              return newFloor;
+            });
   }
 }
