@@ -1,6 +1,5 @@
-package com.dorian.aoc2015.common;
+package com.dorian.common;
 
 public interface Day {
-
     void start();
 }

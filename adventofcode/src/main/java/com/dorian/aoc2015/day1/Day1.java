@@ -1,6 +1,6 @@
 package com.dorian.aoc2015.day1;
 
-import com.dorian.aoc2015.common.Day;
+import com.dorian.common.Day;
 
 public class Day1 implements Day {
 
