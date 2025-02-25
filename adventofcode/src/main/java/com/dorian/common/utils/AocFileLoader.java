@@ -12,14 +12,25 @@ import java.util.List;
 public class AocFileLoader {
   private static final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
-  public static List<String> readFromResources(String resourceFile)
+  public static List<String> readLinesFromResources(String resourceFilePath)
       throws IOException, URISyntaxException {
-    URL url = classloader.getResource(resourceFile);
+    URL url = getUrlFromResourceFilePath(resourceFilePath);
+    return Files.readAllLines(Paths.get(url.toURI()), Charset.defaultCharset());
+  }
+
+  public static String readStringFromResources(String resourceFilePath)
+      throws URISyntaxException, IOException {
+    URL url = getUrlFromResourceFilePath(resourceFilePath);
+    return Files.readString(Paths.get(url.toURI()), Charset.defaultCharset());
+  }
+
+  private static URL getUrlFromResourceFilePath(String resourceFilePath) throws IOException {
+    URL url = classloader.getResource(resourceFilePath);
     if (url == null) {
       throw new IOException("Malformed url/resource name");
     }
 
-    return Files.readAllLines(Paths.get(url.toURI()), Charset.defaultCharset());
+    return url;
   }
 
   private AocFileLoader() {

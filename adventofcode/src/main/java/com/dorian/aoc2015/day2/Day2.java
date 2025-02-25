@@ -14,7 +14,7 @@ public class Day2 implements Day {
     final Logger logger = Logger.getLogger(this.getClass().getName());
     Elves elves = new Elves();
     try {
-      List<String> dimensions = AocFileLoader.readFromResources("aoc2015/day2.txt");
+      List<String> dimensions = AocFileLoader.readLinesFromResources("aoc2015/day2.txt");
       Answer answer = elves.computeAnswer(dimensions);
       logger.log(
           Level.INFO,
