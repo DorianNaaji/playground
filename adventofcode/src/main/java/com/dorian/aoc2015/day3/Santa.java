@@ -1,11 +1,23 @@
 package com.dorian.aoc2015.day3;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 // Starting point is 0.
 public class Santa {
-  private final Map map = new Map();
-  private long distributedGifts = 0;
+  protected final Map map = new Map();
+
+  /** Computes the unique houses that were visited by two Santas */
+  public static long getUniqueVisitedHouses(Santa santa1, Santa santa2) {
+    List<House> union = new ArrayList<>(santa1.getMap().getVisitedHouses());
+    for (House house : santa2.getMap().getVisitedHouses()) {
+      if (!union.contains(house)) {
+        union.add(house);
+      }
+    }
+    return union.size();
+  }
 
   public Map getMap() {
     return map;
@@ -14,12 +26,8 @@ public class Santa {
   public void move(CardinalDirection direction) {
     Coordinates currentCoordinates = map.getCurrentCoordinatesOnMap();
     Coordinates nextLocation = getNextLocation(direction, currentCoordinates);
-
     Optional<House> houseToVisit = this.map.findHouseByCoordinates(nextLocation);
-    if (houseToVisit.isPresent()) {
-      this.distributedGifts++;
-      houseToVisit.get().increaseTimesVisited();
-    } else {
+    if (houseToVisit.isEmpty()) {
       this.map.visitHouse(nextLocation);
     }
 

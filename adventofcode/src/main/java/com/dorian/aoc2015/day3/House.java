@@ -1,22 +1,13 @@
 package com.dorian.aoc2015.day3;
 
-public class House {
-  private final Coordinates coordinates;
-  private long timesVisited = 0;
+import java.util.Objects;
 
-  public House(Coordinates coordinates) {
-    this.coordinates = coordinates;
-  }
+public record House(Coordinates coordinates) {
 
-  public void increaseTimesVisited() {
-    this.timesVisited++;
-  }
-
-  public long getTimesVisited() {
-    return timesVisited;
-  }
-
-  public Coordinates getCoordinates() {
-    return coordinates;
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    House house = (House) o;
+    return Objects.equals(coordinates, house.coordinates);
   }
 }

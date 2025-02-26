@@ -17,12 +17,26 @@ public class Day3 implements Day {
       String directionsStr = AocFileLoader.readStringFromResources("aoc2015/day3.txt");
       char[] directions = directionsStr.toCharArray();
       Santa santa = new Santa();
+      RoboSanta roboSanta = new RoboSanta();
 
-      for (char c : directions) {
-        santa.move(CardinalDirection.fromAngleBracket(c));
+      for (int i = 0; i < directions.length; i++) {
+        CardinalDirection direction = CardinalDirection.fromAngleBracket(directions[i]);
+        if (i % 2 == 0) {
+          santa.move(direction);
+        } else {
+          roboSanta.move(direction);
+        }
       }
 
       logger.log(Level.INFO, "Santa visited {0} houses", santa.getMap().getVisitedHouses().size());
+      logger.log(
+          Level.INFO,
+          "Robo-Santa visited {0} houses",
+          roboSanta.getMap().getVisitedHouses().size());
+      logger.log(
+          Level.INFO,
+          "Santa & Robo-Santa visited {0} unique houses",
+          Santa.getUniqueVisitedHouses(santa, roboSanta));
 
     } catch (URISyntaxException e) {
       logger.log(Level.SEVERE, "Malformed file path", e);

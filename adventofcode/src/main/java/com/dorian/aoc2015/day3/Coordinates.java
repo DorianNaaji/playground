@@ -3,8 +3,10 @@ package com.dorian.aoc2015.day3;
 import java.util.Objects;
 
 public class Coordinates {
-  private long x;
-  private long y;
+  public static final Coordinates START = new Coordinates(0, 0);
+
+  private final long x;
+  private final long y;
 
   public Coordinates(long x, long y) {
     this.x = x;

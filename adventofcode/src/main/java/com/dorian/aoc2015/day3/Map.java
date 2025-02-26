@@ -20,8 +20,8 @@ public class Map {
     return currentCoordinatesOnMap;
   }
 
-  public void visitHouse(Coordinates coordinates) {
-    if (this.visitedHouses.stream().anyMatch(house -> house.getCoordinates().equals(coordinates))) {
+  public void visitHouse(Coordinates coordinates) throws IllegalStateException {
+    if (this.visitedHouses.stream().anyMatch(house -> house.coordinates().equals(coordinates))) {
       throw new IllegalStateException(
           "There can't be two houses at the same location: " + coordinates.toString());
     }
@@ -30,7 +30,7 @@ public class Map {
 
   public Optional<House> findHouseByCoordinates(Coordinates coordinates) {
     return visitedHouses.stream()
-        .filter(house -> house.getCoordinates().equals(coordinates))
+        .filter(house -> house.coordinates().equals(coordinates))
         .findFirst();
   }
 }
