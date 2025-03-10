@@ -13,9 +13,9 @@ public class Santa {
   private final List<SantaString> niceStrings = new ArrayList<>();
   private final List<SantaString> naughtyStrings = new ArrayList<>();
 
-  public void sortNiceStrings() {
+  public void sortSantaStrings() {
     for (SantaString santaString : santaStrings) {
-      if (santaString.isNice()) {
+      if (santaString.isEvenNicer()) {
         niceStrings.add(santaString);
       } else {
         naughtyStrings.add(santaString);

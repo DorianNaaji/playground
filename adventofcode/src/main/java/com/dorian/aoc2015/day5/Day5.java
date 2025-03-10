@@ -10,7 +10,7 @@ public class Day5 implements Day {
   public void start() {
     try {
       Santa santa = new Santa(AocFileLoader.readLinesFromResources("aoc2015/day5.txt"));
-      santa.sortNiceStrings();
+      santa.sortSantaStrings();
       log("There are {0} nice strings", santa.getNiceStringsCount());
     } catch (IOException | URISyntaxException e) {
       throw new RuntimeException(e);
