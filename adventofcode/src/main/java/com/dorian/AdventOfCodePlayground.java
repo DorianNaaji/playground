@@ -1,9 +1,9 @@
 package com.dorian;
 
-import com.dorian.aoc2015.day5.Day5;
+import com.dorian.aoc2015.day6.Day6;
 
 public class AdventOfCodePlayground {
   public static void main(String[] args) {
-    new Day5().start();
+    new Day6().start();
   }
 }
