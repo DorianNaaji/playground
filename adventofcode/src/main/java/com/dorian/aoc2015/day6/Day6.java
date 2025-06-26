@@ -16,7 +16,9 @@ public class Day6 implements Day {
       Worker worker = new Worker(reader.read());
       worker.followInstructions();
       // 1st result : 398967 => answer is too low
-      log("{0} lights are lit", worker.getGrid().countLit());
+      // 400410
+      //      log("{0} lights are lit", worker.getGrid().countLit());
+      log("total brightness is {0}", worker.getGrid().countBrightness());
     } catch (IOException | URISyntaxException e) {
       throw new RuntimeException(e);
     }

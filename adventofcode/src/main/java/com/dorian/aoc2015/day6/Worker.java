@@ -42,11 +42,7 @@ public class Worker {
     Light currentLight = this.grid.getGrid()[x][y];
     switch (action) {
       case TOGGLE -> {
-        if (currentLight.isLit()) {
-          currentLight.turnOff();
-        } else {
-          currentLight.turnOn();
-        }
+        currentLight.toggle();
       }
       case TURN_ON -> {
         currentLight.turnOn();

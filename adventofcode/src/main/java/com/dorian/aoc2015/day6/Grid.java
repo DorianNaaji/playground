@@ -15,13 +15,11 @@ public class Grid {
     return grid;
   }
 
-  public long countLit() {
+  public long countBrightness() {
     long lit = 0;
     for (int x = 0; x < grid.length; x++) {
       for (int y = 0; y < grid[x].length; y++) {
-        if (grid[x][y].isLit()) {
-          lit++;
-        }
+        lit += grid[x][y].getBrightness();
       }
     }
     return lit;

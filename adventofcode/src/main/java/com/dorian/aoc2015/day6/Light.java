@@ -2,22 +2,28 @@ package com.dorian.aoc2015.day6;
 
 public class Light {
   private Coordinates coordinates;
-  private boolean lit;
+  private int brightness;
 
   public Light(long posX, long posY) {
     this.coordinates = new Coordinates(posX, posY);
-    this.lit = false;
+    this.brightness = 0;
   }
 
-  public boolean isLit() {
-    return lit;
+  public int getBrightness() {
+    return this.brightness;
+  }
+
+  public void toggle() {
+    this.brightness += 2;
   }
 
   public void turnOn() {
-    this.lit = true;
+    this.brightness++;
   }
 
   public void turnOff() {
-    this.lit = false;
+    if (this.brightness > 0) {
+      this.brightness--;
+    }
   }
 }
