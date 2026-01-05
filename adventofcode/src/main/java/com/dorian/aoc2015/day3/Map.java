@@ -23,7 +23,7 @@ public class Map {
   public void visitHouse(Coordinates coordinates) throws IllegalStateException {
     if (this.visitedHouses.stream().anyMatch(house -> house.coordinates().equals(coordinates))) {
       throw new IllegalStateException(
-          "There can't be two houses at the same location: " + coordinates.toString());
+          "There can't be two houses at the same name: " + coordinates.toString());
     }
     this.visitedHouses.add(new House(coordinates));
   }
