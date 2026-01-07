@@ -18,7 +18,7 @@ public class Day8 implements Day {
 
       for (String gift: gifts) {
         String giftTransformed = gift.substring(1, gift.length() - 1);
-        giftTransformed = giftTransformed.replace("\\\"", "");
+        giftTransformed = giftTransformed.replace("\\\"", "\"");
           giftTransformed = giftTransformed.replace("\\\\", "\\");
         giftTransformed = giftTransformed.replaceAll("\\\\x[0-9A-Fa-f]{2}", "!");
 
